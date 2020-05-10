@@ -14,7 +14,7 @@ after_success:
     - docker build -t dmeresz/multi-nginx ./nginx
     - docker build -t dmeresz/multi-worker ./worker
     # Log in to the docker CLI
-    - docker login --username "$DOCKER_ID" --password "$DOCKER_PASSWORD"
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     # Take those images and push them to docker hub
     - docker push dmeresz/multi-client
     - docker push dmeresz/multi-server
